@@ -316,3 +316,9 @@ body.dark-mode .toggle-theme {
         color: #f1c40f;
     }
 }
+
+/* Fix: keep the mobile menu overlay full-screen.
+   A transform on the header would trap the fixed-position overlay inside it. */
+.navbar.fade-in {
+    transform: none !important;
+}
