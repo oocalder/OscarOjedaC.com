@@ -299,3 +299,15 @@ body {
 .image-container img:nth-child(5) {
   animation-delay: 0.9s;
 }
+
+/* Phones: keep two columns while scrolling overules last @media*/
+@media screen and (max-width: 600px) {
+  .image-container {
+    columns: 2;
+    column-gap: 8px;
+  }
+
+  .image-container img {
+    margin-bottom: 8px;
+  }
+}
