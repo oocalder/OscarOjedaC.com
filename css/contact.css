@@ -142,3 +142,61 @@
     .name-row      { flex-direction: column; }
     .submit-btn    { width: 100%; align-self: stretch; }
 }
+
+/* Phones: compact layout so the whole form fits on one screen */
+@media screen and (max-width: 600px) {
+  .about-container {
+    margin: 16px auto;
+    max-width: 92%;
+  }
+
+  .navbar + br { display: none; }
+
+  .contact-title {
+    font-size: 34px;
+    letter-spacing: 3px;
+    margin-bottom: 4px;
+  }
+
+  .contact-sub {
+    font-size: 18px;
+    letter-spacing: 1.5px;
+    margin-bottom: 16px;
+  }
+
+  .contact-form {
+    gap: 12px;
+    padding-bottom: 24px;
+  }
+
+  .field { gap: 4px; }
+
+  .field-label { font-size: 22px; }
+  .field-label .req { font-size: 15px; margin-left: 6px; }
+  .field-sublabel { font-size: 16px; }
+
+  .name-row {
+    flex-direction: row;
+    gap: 10px;
+  }
+
+  .contact-form input[type="text"],
+  .contact-form input[type="email"],
+  .contact-form textarea {
+    font-size: 18px;
+    padding: 9px 10px;
+  }
+
+  .contact-form textarea { min-height: 90px; }
+
+  .submit-btn {
+    font-size: 22px;
+    padding: 10px 24px;
+    letter-spacing: 2px;
+  }
+
+  .form-status {
+    font-size: 18px;
+    min-height: 20px;
+  }
+}
