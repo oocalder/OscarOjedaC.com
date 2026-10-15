@@ -157,7 +157,7 @@ body {
 
 }
 
-/* 📌 FIX: Ensure Email Stays Left */
+/* FIX: Ensure Email Stays Left */
 .about-content h3 u {
     text-decoration: underline;
     display: inline-block;
@@ -226,4 +226,93 @@ body.dark-mode .toggle-theme {
     background-color: #000;
     color: #fff;
     border-color: #000;
+}
+
+/* ============================================
+   Mobile Menu (added to match index.html's
+   hamburger behavior on About/Contact/Press)
+   ============================================ */
+
+/* Menu Toggle and Overlay - Hidden by Default */
+.menu-toggle,
+.menu-overlay {
+    display: none;
+}
+
+@media screen and (max-width: 1024px) {
+    .navbar .menu {
+        display: none;
+    }
+
+    .menu-toggle {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 24px;
+        width: 30px;
+        cursor: pointer;
+        position: relative;
+        z-index: 1000;
+    }
+
+    .bar {
+        width: 100%;
+        height: 4px;
+        background-color: #fff;
+        transition: all 0.3s ease;
+    }
+
+    .menu-toggle.active .bar:nth-child(1) {
+        transform: rotate(45deg);
+        top: 10px;
+        position: absolute;
+    }
+
+    .menu-toggle.active .bar:nth-child(2) {
+        transform: rotate(-45deg);
+        top: 10px;
+        position: absolute;
+    }
+
+    .menu-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.9);
+        color: white;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        z-index: 999;
+        transition: opacity 0.3s ease;
+    }
+
+    .menu-overlay.active {
+        display: flex;
+        opacity: 1;
+    }
+
+    .menu-overlay ul {
+        list-style: none;
+        padding: 0;
+        text-align: center;
+    }
+
+    .menu-overlay li {
+        margin: 15px 0;
+    }
+
+    .menu-overlay li a {
+        color: white;
+        text-decoration: none;
+        font-size: 24px;
+        transition: color 0.3s;
+    }
+
+    .menu-overlay li a:hover {
+        color: #f1c40f;
+    }
 }
