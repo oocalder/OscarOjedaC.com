@@ -35,8 +35,9 @@ let mx = -999,
   my = -999,
   rp = null,
   dirty = 1;
+const mobileMotion = matchMedia("(pointer: coarse)");
 function dsz() {
-  const d = Math.min(devicePixelRatio || 1, 2);
+  const d = Math.min(devicePixelRatio || 1, mobileMotion.matches ? 1.25 : 2);
   dm.width = dev.clientWidth * d;
   dm.height = dev.clientHeight * d;
   dg.setTransform(d, 0, 0, d, 0, 0);
@@ -46,16 +47,18 @@ dsz();
 addEventListener("resize", dsz);
 dev.addEventListener("pointermove", (e) => {
   const r = dev.getBoundingClientRect();
+  dirty = 1;
   mx = e.clientX - r.left;
   my = e.clientY - r.top;
 });
+dev.addEventListener("pointerup", () => { mx = -999; dirty = 1; });
 dev.addEventListener("pointerleave", () => {
   mx = -999;
   dirty = 1;
 });
 (function dl(now) {
   requestAnimationFrame(dl);
-  if (document.body.classList.contains("zoom") || (mx < -900 && !rp && !dirty)) return;
+  if (document.body.classList.contains("zoom") || (!rp && !dirty)) return;
   dirty = 0;
   const W = dev.clientWidth,
     H = dev.clientHeight,
@@ -545,7 +548,7 @@ function forest() {
   showProject(1);
   const c = $("#cv"),
     g = c.getContext("2d"),
-    d = Math.min(devicePixelRatio || 1, 1.5),
+    d = Math.min(devicePixelRatio || 1, mobileMotion.matches ? 1 : 1.5),
     W = ov.clientWidth,
     H = ov.clientHeight;
   c.width = W * d;
@@ -659,7 +662,7 @@ function focalBg(o, url, F, W, H) {
 function icons() {
   const W = dev.clientWidth,
     H = dev.clientHeight,
-    d = Math.min(devicePixelRatio || 1, 1.5),
+    d = Math.min(devicePixelRatio || 1, mobileMotion.matches ? 1 : 1.5),
     { T, M } = tree(W, H, d),
     c = document.createElement("canvas");
   c.width = W;

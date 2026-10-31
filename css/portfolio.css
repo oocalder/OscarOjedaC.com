@@ -1287,3 +1287,18 @@ a:focus-visible {
   min-height: 0;
   padding-bottom: 32px;
 }
+
+/* Mobile: reserve icon space; animate transforms instead of relaying out rows. */
+@media (max-width: 767px) and (orientation: portrait) {
+  :root { --portal: clamp(60px, min(19vw, 10svh), 84px); }
+  #col { inset: 12svh 0 20svh; }
+  .p { width: calc(var(--sz) * 1.22); height: calc(var(--sz) * 1.22); display: grid; place-items: center; }
+  .orb { transition: transform .36s cubic-bezier(.2,.8,.2,1), border-radius .36s; transform: translateZ(0); }
+  .p.f .orb { width: var(--sz); height: var(--sz); transform: scale(1.22) translateZ(0); }
+  #home { transition: transform .45s, opacity .45s; }
+  .zoom #home { filter: none; }
+  #socials a, #project-panel { backdrop-filter: none; -webkit-backdrop-filter: none; }
+  #project-panel { background: #f9f6faf5; }
+  .o-ct::before, .o-ct::after { animation-name: mobilePulse; }
+  @keyframes mobilePulse { to { transform: scale(7); opacity: 0; } }
+}
