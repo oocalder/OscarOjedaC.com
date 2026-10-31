@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="360" viewBox="0 0 1120 360" role="img" aria-labelledby="t d">
+  <title id="t">Drive Aware system overview</title>
+  <desc id="d">SD card recordings flow into a Raspberry Pi running Flask, where a local browser can access video and log endpoints.</desc>
+  <defs>
+    <pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="#6d9855" opacity=".34"/></pattern>
+  </defs>
+  <rect width="1120" height="360" fill="#261f17"/>
+  <rect width="1120" height="360" fill="url(#dots)"/>
+  <text x="48" y="54" fill="#7ddc4a" font-family="monospace" font-size="19" letter-spacing="3">DRIVE_AWARE / LOCAL SYSTEM</text>
+  <text x="48" y="81" fill="#bcb6ac" font-family="monospace" font-size="13" letter-spacing="1">ARCHIVED PROTOTYPE • DIAGRAM, NOT LIVE TELEMETRY</text>
+  <g font-family="monospace" fill="none" stroke="#7ddc4a" stroke-width="2">
+    <rect x="52" y="116" width="270" height="164" rx="14"/>
+    <rect x="425" y="116" width="270" height="164" rx="14"/>
+    <rect x="798" y="116" width="270" height="164" rx="14"/>
+    <path d="M322 198 H425 M695 198 H798" stroke-dasharray="6 7"/>
+    <path d="M412 190 L425 198 L412 206 M785 190 L798 198 L785 206"/>
+  </g>
+  <g font-family="monospace">
+    <text x="77" y="154" fill="#a5a098" font-size="15" letter-spacing="1">01 / INPUT</text>
+    <text x="77" y="197" fill="#f9f6fa" font-size="27" font-weight="bold">DASHCAM</text>
+    <text x="77" y="228" fill="#7ddc4a" font-size="17">SD-CARD FILES</text>
+    <text x="449" y="154" fill="#a5a098" font-size="15" letter-spacing="1">02 / BACKEND</text>
+    <text x="449" y="197" fill="#f9f6fa" font-size="27" font-weight="bold">RASPBERRY PI</text>
+    <text x="449" y="228" fill="#7ddc4a" font-size="17">PYTHON + FLASK</text>
+    <text x="822" y="154" fill="#a5a098" font-size="15" letter-spacing="1">03 / OUTPUT</text>
+    <text x="822" y="197" fill="#f9f6fa" font-size="27" font-weight="bold">WEB VIEW</text>
+    <text x="822" y="228" fill="#7ddc4a" font-size="17">VIDEO + JSON LOGS</text>
+    <text x="52" y="328" fill="#bbb5ac" font-size="13">EXPERIMENTAL: ANDROID ACCELEROMETER</text>
+    <text x="790" y="328" fill="#bbb5ac" font-size="13">PLANNED: HOME ALERTS</text>
+  </g>
+</svg>

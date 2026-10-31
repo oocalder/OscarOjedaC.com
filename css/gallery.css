@@ -1,0 +1,111 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  background: #000;
+  color: #f9f6fa;
+  font:
+    12px/1.5 ui-monospace,
+    monospace;
+}
+header {
+  padding: 80px 5vw 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+}
+h1 {
+  font-size: clamp(24px, 4vw, 48px);
+  font-weight: 400;
+  margin: 0;
+}
+header p {
+  margin: 8px 0;
+}
+.gallery {
+  columns: 3;
+  column-gap: 16px;
+  padding: 0 5vw 60px;
+}
+.photo {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  margin: 0 0 16px;
+  background: none;
+  break-inside: avoid;
+  cursor: zoom-in;
+}
+.photo img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 3px;
+}
+.photo:focus-visible,
+button:focus-visible {
+  outline: 3px solid #3f9a3a;
+  outline-offset: 4px;
+}
+dialog {
+  padding: 0;
+  border: 0;
+  background: #171914;
+  color: white;
+  width: 95vw;
+  max-width: 1500px;
+  height: 92dvh;
+  max-height: 92dvh;
+}
+dialog::backdrop {
+  background: #000d;
+}
+dialog img {
+  width: 100%;
+  height: calc(100% - 60px);
+  object-fit: contain;
+}
+.controls {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 16px;
+}
+.controls button {
+  background: none;
+  color: white;
+  border: 1px solid #ffffff55;
+  border-radius: 6px;
+  min-height: 44px;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+button {
+  font: inherit;
+}
+@media (max-width: 700px) {
+  .gallery {
+    columns: 2;
+    column-gap: 10px;
+    padding: 0 16px 30px;
+  }
+  .photo {
+    margin-bottom: 10px;
+  }
+  header {
+    padding: 72px 16px 24px;
+    display: block;
+  }
+  header > span {
+    display: block;
+    margin-top: 12px;
+  }
+}
+@media (max-width: 380px) {
+  .gallery {
+    columns: 1;
+  }
+}

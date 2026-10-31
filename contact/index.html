@@ -1,164 +1,181 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Custom CSS files -->
-    <link rel="stylesheet" href="../css/about.css">
-    <link rel="stylesheet" href="../css/contact.css">
+    <link rel="stylesheet" href="../css/about.css" />
+    <link rel="stylesheet" href="../css/contact.css" />
 
     <title>Contact - Oscar Ojeda</title>
 
     <!-- Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
-</head>
-<body>
-
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     <div class="about-container">
-        <header class="navbar fade-in">
-            <h1 class="title"><a href="../index.html" style="text-decoration: none; color: inherit;">Oscar Ojeda 0.0</a></h1>
+      <header class="navbar fade-in">
+        <h1 class="title">
+          <a href="../index.html" style="text-decoration: none; color: inherit">Oscar Ojeda 0.0</a>
+        </h1>
 
-            <nav>
-                <ul class="menu">
-                    <li><a href="../index.html">Photo</a></li>
-                    <!-- <li><a href="../press/">Press</a></li> -->
-                    <li><a href="../contact/" class="active">Contact</a></li>
-                    <li><a href="../about/">About</a></li>
-                </ul>
-            </nav>
+        <nav>
+          <ul class="menu">
+            <li><a href="../index.html">Photo</a></li>
+            <!-- <li><a href="../press/">Press</a></li> -->
+            <li><a href="../contact/" class="active">Contact</a></li>
+            <li><a href="../about/">About</a></li>
+          </ul>
+        </nav>
 
-            <div class="menu-toggle">
-                <div class="bar"></div>
-                <div class="bar"></div>
-            </div>
-            <nav class="menu-overlay">
-                <ul>
-                    <li><a href="../index.html">Photo</a></li>
-                    <!-- <li><a href="../press/">Press</a></li> -->
-                    <li><a href="../contact/" class="active">Contact</a></li>
-                    <li><a href="../about/">About</a></li>
-                </ul>
-            </nav>
-        </header>
-<br>
-        <main class="contact-content">
-            <h2 class="contact-title fade-in delay-1">Contact</h2>
-            <p class="contact-sub fade-in delay-2">New business: include location, budget, &amp; timeline</p>
+        <div class="menu-toggle">
+          <div class="bar"></div>
+          <div class="bar"></div>
+        </div>
+        <nav class="menu-overlay">
+          <ul>
+            <li><a href="../index.html">Photo</a></li>
+            <!-- <li><a href="../press/">Press</a></li> -->
+            <li><a href="../contact/" class="active">Contact</a></li>
+            <li><a href="../about/">About</a></li>
+          </ul>
+        </nav>
+      </header>
+      <br />
+      <main class="contact-content">
+        <h2 class="contact-title fade-in delay-1">Contact</h2>
+        <p class="contact-sub fade-in delay-2">
+          New business: include location, budget, &amp; timeline
+        </p>
 
-            <!--
+        <!--
                 FORM SETUP: replace YOUR_FORM_ID below with your Formspree form ID
                 (see formspree.io). Until you do, the form falls back to opening
                 the visitor's email app with their message pre-filled.
             -->
-            <form id="contact-form" class="contact-form fade-in delay-3"
-                  action="https://formspree.io/f/xaeqaoja" method="POST">
+        <form
+          id="contact-form"
+          class="contact-form fade-in delay-3"
+          action="https://formspree.io/f/xaeqaoja"
+          method="POST"
+        >
+          <div class="field">
+            <span class="field-label">Name</span>
+            <div class="name-row">
+              <div class="field-half">
+                <label class="field-sublabel" for="first-name">First Name</label>
+                <input type="text" id="first-name" name="first_name" autocomplete="given-name" />
+              </div>
+              <div class="field-half">
+                <label class="field-sublabel" for="last-name">Last Name</label>
+                <input type="text" id="last-name" name="last_name" autocomplete="family-name" />
+              </div>
+            </div>
+          </div>
 
-                <div class="field">
-                    <span class="field-label">Name</span>
-                    <div class="name-row">
-                        <div class="field-half">
-                            <label class="field-sublabel" for="first-name">First Name</label>
-                            <input type="text" id="first-name" name="first_name" autocomplete="given-name">
-                        </div>
-                        <div class="field-half">
-                            <label class="field-sublabel" for="last-name">Last Name</label>
-                            <input type="text" id="last-name" name="last_name" autocomplete="family-name">
-                        </div>
-                    </div>
-                </div>
+          <div class="field">
+            <label class="field-label" for="subject">Subject</label>
+            <input type="text" id="subject" name="subject" />
+          </div>
 
-                <div class="field">
-                    <label class="field-label" for="subject">Subject</label>
-                    <input type="text" id="subject" name="subject">
-                </div>
+          <div class="field">
+            <label class="field-label" for="email">Email<span class="req">(required)</span></label>
+            <input type="email" id="email" name="email" required autocomplete="email" />
+          </div>
 
-                <div class="field">
-                    <label class="field-label" for="email">Email<span class="req">(required)</span></label>
-                    <input type="email" id="email" name="email" required autocomplete="email">
-                </div>
+          <div class="field">
+            <label class="field-label" for="message"
+              >Message<span class="req">(required)</span></label
+            >
+            <textarea id="message" name="message" required></textarea>
+          </div>
 
-                <div class="field">
-                    <label class="field-label" for="message">Message<span class="req">(required)</span></label>
-                    <textarea id="message" name="message" required></textarea>
-                </div>
+          <!-- Spam trap: real visitors never see or fill this -->
+          <div class="hp-field" aria-hidden="true">
+            <label for="website">Leave this empty</label>
+            <input type="text" id="website" name="_gotcha" tabindex="-1" autocomplete="off" />
+          </div>
 
-                <!-- Spam trap: real visitors never see or fill this -->
-                <div class="hp-field" aria-hidden="true">
-                    <label for="website">Leave this empty</label>
-                    <input type="text" id="website" name="_gotcha" tabindex="-1" autocomplete="off">
-                </div>
-
-                <button type="submit" class="submit-btn">Submit</button>
-                <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
-            </form>
-        </main>
-
+          <button type="submit" class="submit-btn">Submit</button>
+          <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </main>
     </div>
 
     <script src="../js/about.js"></script>
     <script>
-    (function () {
+      (function () {
         var form = document.getElementById("contact-form");
         var statusEl = document.getElementById("form-status");
         var button = form.querySelector(".submit-btn");
         var TO_EMAIL = "OscarOCalder@gmail.com";
 
         function setStatus(msg, type) {
-            statusEl.textContent = msg;
-            statusEl.className = "form-status " + (type || "");
+          statusEl.textContent = msg;
+          statusEl.className = "form-status " + (type || "");
         }
 
         form.addEventListener("submit", function (e) {
-            e.preventDefault();
+          e.preventDefault();
 
-            // Spam trap filled in? Pretend success and do nothing.
-            if (form.elements["_gotcha"].value) {
+          // Spam trap filled in? Pretend success and do nothing.
+          if (form.elements["_gotcha"].value) {
+            setStatus("Thanks! Your message was sent.", "success");
+            return;
+          }
+
+          var first = form.elements["first_name"].value.trim();
+          var last = form.elements["last_name"].value.trim();
+          var subject = form.elements["subject"].value.trim() || "Website inquiry";
+          var email = form.elements["email"].value.trim();
+          var message = form.elements["message"].value.trim();
+          var fullName = (first + " " + last).trim();
+
+          // Formspree not set up yet -> open the visitor's email app instead
+          if (form.action.indexOf("YOUR_FORM_ID") !== -1) {
+            var body =
+              (fullName ? "Name: " + fullName + "\n" : "") + "Email: " + email + "\n\n" + message;
+            window.location.href =
+              "mailto:" +
+              TO_EMAIL +
+              "?subject=" +
+              encodeURIComponent(subject) +
+              "&body=" +
+              encodeURIComponent(body);
+            setStatus("Opening your email app...", "success");
+            return;
+          }
+
+          // Formspree is set up -> send it in the background
+          button.disabled = true;
+          setStatus("Sending...", "");
+
+          fetch(form.action, {
+            method: "POST",
+            body: new FormData(form),
+            headers: { Accept: "application/json" },
+          })
+            .then(function (response) {
+              if (response.ok) {
+                form.reset();
                 setStatus("Thanks! Your message was sent.", "success");
-                return;
-            }
-
-            var first = form.elements["first_name"].value.trim();
-            var last = form.elements["last_name"].value.trim();
-            var subject = form.elements["subject"].value.trim() || "Website inquiry";
-            var email = form.elements["email"].value.trim();
-            var message = form.elements["message"].value.trim();
-            var fullName = (first + " " + last).trim();
-
-            // Formspree not set up yet -> open the visitor's email app instead
-            if (form.action.indexOf("YOUR_FORM_ID") !== -1) {
-                var body = (fullName ? "Name: " + fullName + "\n" : "") +
-                           "Email: " + email + "\n\n" + message;
-                window.location.href = "mailto:" + TO_EMAIL +
-                    "?subject=" + encodeURIComponent(subject) +
-                    "&body=" + encodeURIComponent(body);
-                setStatus("Opening your email app...", "success");
-                return;
-            }
-
-            // Formspree is set up -> send it in the background
-            button.disabled = true;
-            setStatus("Sending...", "");
-
-            fetch(form.action, {
-                method: "POST",
-                body: new FormData(form),
-                headers: { "Accept": "application/json" }
-            }).then(function (response) {
-                if (response.ok) {
-                    form.reset();
-                    setStatus("Thanks! Your message was sent.", "success");
-                } else {
-                    setStatus("Something went wrong. Please email " + TO_EMAIL + " directly.", "error");
-                }
-            }).catch(function () {
+              } else {
                 setStatus("Something went wrong. Please email " + TO_EMAIL + " directly.", "error");
-            }).finally(function () {
-                button.disabled = false;
+              }
+            })
+            .catch(function () {
+              setStatus("Something went wrong. Please email " + TO_EMAIL + " directly.", "error");
+            })
+            .finally(function () {
+              button.disabled = false;
             });
         });
-    })();
+      })();
     </script>
-</body>
+  </body>
 </html>

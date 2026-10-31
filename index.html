@@ -1,82 +1,325 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+    <title>Oscar Ojeda C.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Doto:wght@400;900&family=DM+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/portfolio.css" />
+  </head>
+  <body>
+    <div id="dev">
+      <canvas id="dm" aria-hidden="true"></canvas>
+      <div id="home">
+        <ul id="col">
+          <li class="r">
+            <div class="l" id="dt"></div>
+            <button class="p" data-o="proj" aria-label="PROJECTS">
+              <span class="orb o-proj"></span></button
+            ><span></span>
+          </li>
+          <li class="r">
+            <div class="l">
+              <svg
+                id="gl"
+                viewBox="0 0 9 9"
+                width="26"
+                height="26"
+                fill="currentColor"
+                shape-rendering="crispEdges"
+              ></svg>
+            </div>
+            <button class="p" data-o="cam" aria-label="CAM_VIEW">
+              <span class="orb o-cam"
+                ><svg class="aperture" viewBox="0 0 100 100" aria-hidden="true">
+                  <circle class="aperture-rim" cx="50" cy="50" r="44" />
+                  <g class="aperture-blades">
+                    <path
+                      transform="rotate(0 50 50)"
+                      d="M 90.000 50.000 L 70.000 84.641 L 41.500 64.722 L 58.500 64.722 Z"
+                    >
+                      <animate
+                        attributeName="d"
+                        values="M 90.000 50.000 L 70.000 84.641 L 41.500 64.722 L 58.500 64.722 Z;M 90.000 50.000 L 70.000 84.641 L 49.000 51.732 L 51.000 51.732 Z;M 90.000 50.000 L 70.000 84.641 L 41.500 64.722 L 58.500 64.722 Z"
+                        keyTimes="0;0.48;1"
+                        dur="480ms"
+                        begin="indefinite"
+                      />
+                    </path>
+                    <path
+                      transform="rotate(60 50 50)"
+                      d="M 90.000 50.000 L 70.000 84.641 L 41.500 64.722 L 58.500 64.722 Z"
+                    >
+                      <animate
+                        attributeName="d"
+                        values="M 90.000 50.000 L 70.000 84.641 L 41.500 64.722 L 58.500 64.722 Z;M 90.000 50.000 L 70.000 84.641 L 49.000 51.732 L 51.000 51.732 Z;M 90.000 50.000 L 70.000 84.641 L 41.500 64.722 L 58.500 64.722 Z"
+                        keyTimes="0;0.48;1"
+                        dur="480ms"
+                        begin="indefinite"
+                      />
+                    </path>
+                    <path
+                      transform="rotate(120 50 50)"
+                      d="M 90.000 50.000 L 70.000 84.641 L 41.500 64.722 L 58.500 64.722 Z"
+                    >
+                      <animate
+                        attributeName="d"
+                        values="M 90.000 50.000 L 70.000 84.641 L 41.500 64.722 L 58.500 64.722 Z;M 90.000 50.000 L 70.000 84.641 L 49.000 51.732 L 51.000 51.732 Z;M 90.000 50.000 L 70.000 84.641 L 41.500 64.722 L 58.500 64.722 Z"
+                        keyTimes="0;0.48;1"
+                        dur="480ms"
+                        begin="indefinite"
+                      />
+                    </path>
+                    <path
+                      transform="rotate(180 50 50)"
+                      d="M 90.000 50.000 L 70.000 84.641 L 41.500 64.722 L 58.500 64.722 Z"
+                    >
+                      <animate
+                        attributeName="d"
+                        values="M 90.000 50.000 L 70.000 84.641 L 41.500 64.722 L 58.500 64.722 Z;M 90.000 50.000 L 70.000 84.641 L 49.000 51.732 L 51.000 51.732 Z;M 90.000 50.000 L 70.000 84.641 L 41.500 64.722 L 58.500 64.722 Z"
+                        keyTimes="0;0.48;1"
+                        dur="480ms"
+                        begin="indefinite"
+                      />
+                    </path>
+                    <path
+                      transform="rotate(240 50 50)"
+                      d="M 90.000 50.000 L 70.000 84.641 L 41.500 64.722 L 58.500 64.722 Z"
+                    >
+                      <animate
+                        attributeName="d"
+                        values="M 90.000 50.000 L 70.000 84.641 L 41.500 64.722 L 58.500 64.722 Z;M 90.000 50.000 L 70.000 84.641 L 49.000 51.732 L 51.000 51.732 Z;M 90.000 50.000 L 70.000 84.641 L 41.500 64.722 L 58.500 64.722 Z"
+                        keyTimes="0;0.48;1"
+                        dur="480ms"
+                        begin="indefinite"
+                      />
+                    </path>
+                    <path
+                      transform="rotate(300 50 50)"
+                      d="M 90.000 50.000 L 70.000 84.641 L 41.500 64.722 L 58.500 64.722 Z"
+                    >
+                      <animate
+                        attributeName="d"
+                        values="M 90.000 50.000 L 70.000 84.641 L 41.500 64.722 L 58.500 64.722 Z;M 90.000 50.000 L 70.000 84.641 L 49.000 51.732 L 51.000 51.732 Z;M 90.000 50.000 L 70.000 84.641 L 41.500 64.722 L 58.500 64.722 Z"
+                        keyTimes="0;0.48;1"
+                        dur="480ms"
+                        begin="indefinite"
+                      />
+                    </path>
+                  </g></svg
+              ></span></button
+            ><span></span>
+          </li>
+          <li class="r">
+            <div class="l tm" id="tm"></div>
+            <a class="p" id="dl" href="assets/Oscar_Ojeda_Resume.pdf" download aria-label="RESUME"
+              ><span class="orb o-cv"></span></a
+            ><span></span>
+          </li>
+          <!-- PERSONAL INDEX (disabled): remove the comment markers here and around its screen section below to enable
+<li class="r"><div class="l">PERSONAL<br>INDEX</div><button class="p" data-o="index" aria-label="PERSONAL_INDEX"><span class="orb vn o-vinyl"></span></button><span></span></li>
+-->
+          <li class="r">
+            <div class="l">CONTACT</div>
+            <button class="p" data-o="contact" aria-label="CONTACT">
+              <span class="orb o-ct"></span></button
+            ><span></span>
+          </li>
+        </ul>
+      </div>
+      <nav id="socials" aria-label="Social profiles">
+        <a
+          href="https://www.linkedin.com/in/oscarojedac/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="LinkedIn profile (opens in a new tab)"
+          title="LinkedIn"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M4 3a2 2 0 1 0 0 4 2 2 0 0 0 0-4M2 9h4v13H2zm7 0h4v2c1-2 7-4 9 2v9h-4v-8c0-3-5-3-5 0v8H9z"
+            />
+          </svg>
+        </a>
+        <a
+          href="https://www.instagram.com/OscarOjeda0.0/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Instagram profile (opens in a new tab)"
+          title="Instagram"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+            style="fill: none; stroke: currentColor; stroke-width: 1.8"
+          >
+            <rect x="3" y="3" width="18" height="18" rx="5" />
+            <circle cx="12" cy="12" r="4" />
+            <circle cx="17.5" cy="6.5" r=".8" fill="currentColor" />
+          </svg>
+        </a>
+        <a
+          href="https://github.com/oocalder"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="GitHub"
+          ><svg viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M12 2a10 10 0 0 0-3.2 19.5v-2.2c-2.7.6-3.3-1.2-3.3-1.2-.5-1.2-1.2-1.5-1.2-1.5-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 1.6 2.5 1.1 3 .8.1-.7.4-1.1.7-1.4-2.2-.3-4.5-1.1-4.5-5a4 4 0 0 1 1-2.7c-.1-.3-.4-1.3.1-2.7 0 0 .9-.3 2.8 1a9.5 9.5 0 0 1 5.2 0c1.9-1.3 2.8-1 2.8-1 .5 1.4.2 2.4.1 2.7a4 4 0 0 1 1 2.7c0 3.9-2.3 4.7-4.5 5 .4.3.7.9.7 1.8v3.3A10 10 0 0 0 12 2"
+            /></svg
+        ></a>
+      </nav>
+      <div id="ov">
+        <!-- MY STORY: edit these two paragraphs to update your introduction. -->
+        <section class="s" data-screen="story" aria-label="My story">
+          <div class="rings" aria-hidden="true"></div>
+          <article>
+            <h2>HEY, I'M OSCAR.</h2>
+            <p>
+              I graduated from Arizona State University's W. P. Carey School of Business in 2024
+              with a degree in Computer Information Systems. I tend to live somewhere between IT, cameras, computers, and
+              software development. This site is where I get to put those parts of my life
+              in the same place.
+            </p>
+            <p>
+              My work in D2D, IT solutions and CRM software has put me on the customer-facing side of
+              that relationship. I've spent a great amount of time listening to what someone needs, asking
+              questions, and helping translate technical ideas into something useful. I want to keep
+              bringing that perspective closer to the work of building and implementing systems.
+            </p>
+            <a class="row" id="story-contact" href="contact/index.html">LET'S TALK<span>↗</span></a>
+          </article>
+        </section>
+        <section class="s full" data-screen="proj">
+          <canvas id="cv"></canvas>
+          <p id="az"></p>
+          <p id="dn"></p>
+          <p id="an"></p>
+          <p id="tg">TARGET_ID: 0345<br />SONAR CONT.<br />DEADWOOD</p>
+          <button class="rt" data-p="1" style="left: 30%; top: 50%" aria-label="Project 1">
+            <i></i><b>01</b></button
+          ><button class="rt" data-p="2" style="left: 58%; top: 57%" aria-label="Project 2">
+            <i></i><b>02</b></button
+          ><button class="rt" data-p="3" style="left: 76%; top: 49%" aria-label="Project 3">
+            <i></i><b>03</b>
+          </button>
+          <div id="project-panel" aria-label="Project showcase">
+            <p class="eyebrow">FIELD NOTES / SELECTED WORK</p>
+            <h2>PROJECTS</h2>
+            <p>Explore the markers or choose a project below.</p>
+            <nav id="project-tabs" aria-label="Choose a project">
+              <button type="button" data-project="1">01</button
+              ><button type="button" data-project="2">02</button
+              ><button type="button" data-project="3">03</button>
+            </nav>
+            <div id="project-detail" aria-live="polite">
+              <div id="project-visual"></div>
+              <p id="project-status" aria-label="Project status"></p>
+              <h3 id="project-title"></h3>
+              <p id="project-summary"></p>
+              <dl>
+                <dt>ROLE</dt>
+                <dd id="project-role"></dd>
+                <dt>TOOLS</dt>
+                <dd id="project-tools"></dd>
+                <dt>OUTCOME</dt>
+                <dd id="project-outcome"></dd>
+              </dl>
+              <div id="project-links"></div>
+            </div>
+            <p class="placeholder-note">
+              01 is a documented personal prototype. 02–03 are still placeholders.
+            </p>
+          </div>
+        </section>
+        <img id="cg" alt="" /><iframe id="cf" title="Cam view" allow="autoplay"></iframe>
+        <section class="s" data-screen="contact">
+          <h2 class="contact-title">Contact</h2>
+          <p class="contact-sub">New business: include location, budget, &amp; timeline</p>
 
-    <!-- Custom CSS file link -->
-    <link rel="stylesheet" href="./css/testerstyle.css">
+          <!--
+                FORM SETUP: replace YOUR_FORM_ID below with your Formspree form ID
+                (see formspree.io). Until you do, the form falls back to opening
+                the visitor's email app with their message pre-filled.
+            -->
+          <form
+            id="contact-form"
+            class="contact-form"
+            action="https://formspree.io/f/xaeqaoja"
+            method="POST"
+          >
+            <div class="field">
+              <span class="field-label">Name</span>
+              <div class="name-row">
+                <div class="field-half">
+                  <label class="field-sublabel" for="first-name">First Name</label>
+                  <input type="text" id="first-name" name="first_name" autocomplete="given-name" />
+                </div>
+                <div class="field-half">
+                  <label class="field-sublabel" for="last-name">Last Name</label>
+                  <input type="text" id="last-name" name="last_name" autocomplete="family-name" />
+                </div>
+              </div>
+            </div>
 
-    <title>Oscar Ojeda</title>
+            <div class="field">
+              <label class="field-label" for="subject">Subject</label>
+              <input type="text" id="subject" name="subject" />
+            </div>
 
-    <!-- font for bebas Neue -->
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+            <div class="field">
+              <label class="field-label" for="email"
+                >Email<span class="req">(required)</span></label
+              >
+              <input type="email" id="email" name="email" required autocomplete="email" />
+            </div>
 
-</head>
-<body>
-    
-<div class="container">
+            <div class="field">
+              <label class="field-label" for="message"
+                >Message<span class="req">(required)</span></label
+              >
+              <textarea id="message" name="message" required></textarea>
+            </div>
 
-    <header class="navbar">
-        <h1 class="title">
-            <a href="index.html" style="text-decoration: none; color: inherit;" class="animate-title">Oscar Ojeda 0.0</a>
-        </h1>
-        <button class="toggle-theme animate-logo" aria-label="Toggle Dark Mode">0.0</button>
-        <nav>
-            <ul class="menu">
-                <li><a href="./index.html">Photo</a></li>
-               <li><a href="./contact/">Contact</a></li>
-                <li><a href="./about/">About</a></li>
-            </ul>
-        </nav>
-        <div class="menu-toggle">
-            <div class="bar"></div>
-            <div class="bar"></div>
-        </div>
-        <nav class="menu-overlay">
-            <ul>
-                <li><a href="./index.html">Photo</a></li>
-                <li><a href="./contact/">Contact</a></li>
-                <li><a href="./about/">About</a></li>
-            </ul>
-        </nav>
-    </header>
-    
-    <div class="image-container">
-        <img class="animate-image" src="./images/Portfolio 2025/Port1.jpg"   alt="Image 1">
-        <img class="animate-image" src="./images/Portfolio 2025/Port-18.jpg" alt="Image 2">
-        <img class="animate-image" src="./images/Portfolio 2025/Port-26.jpg" alt="Image 3">
-        <!-- <img class="animate-image" src="./images/Portfolio 2025/Port-15.jpg" alt="Image 4"> -->
-        <!-- <img class="animate-image" src="./images/Portfolio 2025/Port2.jpg"   alt="Image 5"> -->
-        <img class="animate-image" src="./images/Portfolio 2025/Port-20.jpg" alt="Image 6">
-        <!-- <img class="animate-image" src="./images/Portfolio 2025/Port-03.jpg" alt="Image 7">
-        <img class="animate-image" src="./images/Portfolio 2025/Port-04.jpg" alt="Image 8"> -->
-        <img class="animate-image" src="./images/Portfolio 2025/Port-05.jpg" alt="Image 9">
-        <img class="animate-image" src="./images/Portfolio 2025/Port-19.jpg" alt="Image 10">
-        <img class="animate-image" src="./images/Portfolio 2025/Port-21.jpg" alt="Image 11">
-        <img class="animate-image" src="./images/Portfolio 2025/Port-22.jpg" alt="Image 12">
-        <img class="animate-image" src="./images/Portfolio 2025/Port-24.jpg" alt="Image 13">
-        <img class="animate-image" src="./images/Portfolio 2025/Port-14.jpg" alt="Image 14">
-        <img class="animate-image" src="./images/Portfolio 2025/Port-06.jpg" alt="Image 15">
-        <img class="animate-image" src="./images/Portfolio 2025/Port-07.jpg" alt="Image 16">
-        <img class="animate-image" src="./images/Portfolio 2025/Port-13.jpg" alt="Image 17">
-        <!-- <img class="animate-image" src="./images/Portfolio 2025/Port-27.jpg" alt="Image 18"> -->
-        <img class="animate-image" src="./images/Portfolio 2025/Port-23.jpg" alt="Image 19">
-        <img class="animate-image" src="./images/Portfolio 2025/Port-25.jpg" alt="Image 20">
-        <img class="animate-image" src="./images/Portfolio 2025/Port-16.jpg" alt="Image 21">
-        <img class="animate-image" src="./images/Portfolio 2025/Port-11.jpg" alt="Image 22">
-        <img class="animate-image" src="./images/Portfolio 2025/Port-09.jpg" alt="Image 23">
-        <img class="animate-image" src="./images/Portfolio 2025/Port-10.jpg" alt="Image 24">
-        <img class="animate-image" src="./images/Portfolio 2025/Port-08.jpg" alt="Image 25">
-        <!-- <img class="animate-image" src="./images/Portfolio 2025/Port-12.jpg" alt="Image 26"> -->
-        <!-- <img class="animate-image" src="./images/Portfolio 2025/Port-17.jpg" alt="Image 27"> -->
-        
+            <!-- Spam trap: real visitors never see or fill this -->
+            <div class="hp-field" aria-hidden="true">
+              <label for="website">Leave this empty</label>
+              <input type="text" id="website" name="_gotcha" tabindex="-1" autocomplete="off" />
+            </div>
+
+            <button type="submit" class="submit-btn">Submit</button>
+            <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
+          </form>
+          <a class="row" href="mailto:OscarOCalder@gmail.com">OscarOCalder@gmail.com ↗</a>
+        </section>
+        <!-- PERSONAL INDEX screen (disabled)
+<section class="s" data-screen="index"><h2 class="h">PERSONAL<br>INDEX</h2><div class="rec vn"></div>
+<div class="row">PHOTOGRAPHY<span>placeholder</span></div><div class="row">HOBBY_02<span>placeholder</span></div><div class="row">HOBBY_03<span>placeholder</span></div></section>
+-->
+      </div>
+      <div id="pill">
+        <button class="av" data-o="story" aria-label="MY_STORY"></button><small>HI OSCAR</small
+        ><button id="bolt" aria-label="Replay intro">
+          <svg viewBox="0 0 24 24"><path d="M13 2 4 14h6l-1 8 9-12h-6z" /></svg>
+        </button>
+      </div>
+
+      <nav id="bar">
+        <!-- Bottom-left hamburger disabled by request; uncomment alongside its JS handler if needed later.
+        <button class="mn" id="mn" aria-label="Back"><i></i><i></i><i></i></button>
+        -->
+        <span>EXPLORE</span>
+        <div id="sl"><i></i><b id="th"></b></div>
+        <span id="rd"></span>
+      </nav>
+      <button id="x">&larr; BACK</button>
+      <div id="ts"></div>
     </div>
-    
-    
-</div>
-
-<script src="./js/script.js"></script>
-</body>
+    <script src="js/portfolio.js"></script>
+  </body>
 </html>

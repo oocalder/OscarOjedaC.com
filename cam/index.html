@@ -1,0 +1,270 @@
+<!-- ARCHIVED CAMERA INTRO: not loaded by the active portfolio. See README.md. -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Cam View — Oscar Ojeda</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: #dcdbcc;
+        color: #261f17;
+        font:
+          11px ui-monospace,
+          monospace;
+      }
+      #gallery {
+        position: absolute;
+        inset: 0;
+        border: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.65s;
+      }
+      #stage {
+        position: absolute;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        perspective: 1200px;
+        transition: opacity 0.5s;
+        overflow: hidden;
+      }
+      #zoom {
+        width: min(70vw, 560px);
+        aspect-ratio: 1.55;
+        position: relative;
+        transform-origin: 40% 50%;
+        transition: transform 1.6s cubic-bezier(0.65, 0, 0.2, 1);
+      }
+      #camera {
+        position: absolute;
+        inset: 0;
+        transform-style: preserve-3d;
+        transform: rotateY(-22deg) rotateX(6deg);
+        transition: transform 1.9s cubic-bezier(0.4, 0, 0.15, 1);
+      }
+      .face {
+        position: absolute;
+        inset: 0;
+        border-radius: 18px;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        background: linear-gradient(
+          120deg,
+          #ced2c5,
+          #424b43 12%,
+          #adb5a6 15%,
+          #262d28 18%,
+          #252d28 80%,
+          #bec4b4 90%,
+          #666f62
+        );
+        border: 3px solid #b2b9a7;
+        box-shadow:
+          inset 0 0 0 2px #1b231c,
+          0 18px 35px #25311d33;
+      }
+      .front {
+        transform: translateZ(24px);
+        background: #252d28 url("camera-icon.svg") center/112% 117% no-repeat;
+      }
+      .back {
+        transform: rotateY(180deg) translateZ(24px);
+        display: flex;
+        padding: 4%;
+        gap: 4%;
+      }
+      .side {
+        position: absolute;
+        top: 4%;
+        bottom: 4%;
+        width: 48px;
+        left: calc(50% - 24px);
+        background: linear-gradient(90deg, #4d594d, #c4c9bb, #465341);
+        transform: rotateY(90deg) translateZ(calc(min(70vw, 560px) / 2));
+        border-radius: 7px;
+      }
+      .screen {
+        width: 78%;
+        height: 100%;
+        background: #0b1010;
+        border: 7px solid #121b15;
+        border-radius: 4px;
+        overflow: hidden;
+        position: relative;
+      }
+      .screen img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0;
+        transition: opacity 0.6s;
+      }
+      .screen::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, #ffffff18, transparent 45%);
+        pointer-events: none;
+      }
+      .controls {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+      }
+      .controls b {
+        display: block;
+        width: 90%;
+        height: 14%;
+        border: 1px solid #bac4b1;
+        background: #303b2f;
+        border-radius: 5px;
+      }
+      .controls i {
+        display: block;
+        width: 65%;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          #88927d 15%,
+          #26301f 19% 36%,
+          #929b85 40% 46%,
+          #343f2b 50% 70%,
+          #b4bba8 74%
+        );
+        box-shadow: 0 0 0 2px #20291c;
+      }
+      .controls span {
+        font-size: 8px;
+        color: #b9c6a9;
+      }
+      .shutter {
+        position: absolute;
+        top: -9px;
+        left: 12%;
+        width: 15%;
+        height: 12px;
+        background: linear-gradient(#d4dac9, #505d48);
+        border-radius: 6px;
+        transform: translateZ(10px);
+      }
+      #caption {
+        position: absolute;
+        bottom: 12%;
+        width: 100%;
+        text-align: center;
+        letter-spacing: 0.2em;
+        color: #59634e;
+      }
+      #skip {
+        position: absolute;
+        right: 20px;
+        bottom: 22px;
+        background: #261f17;
+        color: #f9f6fa;
+        border: 0;
+        border-radius: 10px;
+        min-height: 44px;
+        padding: 12px 18px;
+        font: inherit;
+        cursor: pointer;
+      }
+      .turn #camera {
+        transform: rotateY(180deg) rotateX(0deg);
+      }
+      .lit .screen img {
+        opacity: 1;
+      }
+      .enter #zoom {
+        transform: scale(var(--zoom, 5)) translateX(10%);
+      }
+      .ready #gallery {
+        opacity: 1;
+        visibility: visible;
+      }
+      .ready #stage {
+        opacity: 0;
+        pointer-events: none;
+      }
+      .ready #skip {
+        display: none;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          transition: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <iframe id="gallery" title="Oscar Ojeda photography gallery" src="gallery.html"></iframe>
+    <div id="stage">
+      <div id="zoom">
+        <div id="camera">
+          <div class="face front"></div>
+          <div class="face back">
+            <div class="screen"><img src="../images/Portfolio 2025/Port1.jpg" alt="" /></div>
+            <div class="controls" aria-hidden="true">
+              <b></b><span>DISP</span><i></i><span>MENU</span><i></i>
+            </div>
+          </div>
+          <div class="side"></div>
+          <div class="shutter"></div>
+        </div>
+      </div>
+      <div id="caption">CAM VIEW / OPENING THE ARCHIVE</div>
+    </div>
+    <!-- Disabled intro control: <button id="skip">Skip intro →</button> -->
+    <script>
+      let timers = [],
+        started = false;
+      const later = (f, ms) => timers.push(setTimeout(f, ms));
+      function finish() {
+        timers.forEach(clearTimeout);
+        document.body.classList.add("ready");
+      }
+      function start() {
+        if (started) return;
+        started = true;
+        document.documentElement.style.setProperty(
+          "--zoom",
+          Math.max(
+            innerWidth / (document.querySelector("#zoom").offsetWidth * 0.65),
+            innerHeight / (document.querySelector("#zoom").offsetHeight * 0.8),
+          ) * 1.15,
+        );
+        if (matchMedia("(prefers-reduced-motion:reduce)").matches) return finish();
+        later(() => document.body.classList.add("turn"), 350);
+        later(() => document.body.classList.add("lit"), 1950);
+        later(() => document.body.classList.add("enter"), 2700);
+        later(finish, 4050);
+      }
+      addEventListener("message", (e) => {
+        if (e.origin !== location.origin) return;
+        if (e.source === parent && e.data?.go) start();
+        if (e.source === document.querySelector("#gallery").contentWindow && e.data?.galleryBack)
+          parent.postMessage({ galleryBack: true }, location.origin);
+      });
+      // Intro button disabled.
+      // document.querySelector('#skip').onclick=finish;
+      addEventListener("keydown", (e) => {
+        if (e.key === "Escape") parent.postMessage({ galleryBack: true }, location.origin);
+      });
+      if (parent === window) start();
+    </script>
+  </body>
+</html>

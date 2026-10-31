@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description" content="Drive Aware: an archived Raspberry Pi and Flask project exploring local dashcam video retrieval, JSON motion logging, and integration troubleshooting." />
+    <title>Drive Aware — Project 01 / Oscar Ojeda</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Doto:wght@400;900&amp;family=DM+Mono:wght@400;500&amp;display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="case-study.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="back-link" href="../../index.html" aria-label="Return to portfolio">← BACK TO PORTFOLIO</a>
+      <span>OSCAR OJEDA <span class="topbar-muted">/ SELECTED WORK</span></span>
+      <span class="topbar-number">01 / 03</span>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="case-title">
+        <div class="hero-copy">
+          <p class="eyebrow">FIELD NOTE 001 <span class="star">✳</span> PERSONAL TECHNICAL PROJECT</p>
+          <h1 id="case-title">DRIVE<br /><span>AWARE.</span></h1>
+          <p class="hero-summary">An experiment in connecting everyday dashcam hardware with a Raspberry Pi, a Flask API, and a local interface for viewing recordings and motion data.</p>
+          <p class="hero-small">Built as a learning prototype, preserved as an implementation case study — not a deployed collision-detection product.</p>
+          <div class="tags" aria-label="Tools used">
+            <span>RASPBERRY PI</span><span>PYTHON</span><span>FLASK</span><span>HTTP / JSON</span><span>HTML</span>
+          </div>
+        </div>
+        <aside class="hero-facts" aria-label="Project facts">
+          <div class="fact"><span>PROJECT</span><strong>01 / DRIVE AWARE</strong></div>
+          <div class="fact"><span>TYPE</span><strong>PERSONAL / IOT + BACKEND</strong></div>
+          <div class="fact"><span>ROLE</span><strong>SYSTEM DESIGN / DEVELOPMENT / DEBUGGING</strong></div>
+          <div class="fact"><span>CURRENT STATE</span><strong class="state">ARCHIVED PROTOTYPE · NOT LIVE</strong></div>
+        </aside>
+      </section>
+
+      <section class="diagram-section" aria-labelledby="system-heading">
+        <div class="section-header">
+          <span class="section-index">/ 01 — SYSTEM</span>
+          <h2 id="system-heading">THE CORE IDEA.</h2>
+        </div>
+        <figure class="architecture">
+          <img src="../../images/drive-aware-system.svg" alt="Conceptual three-stage flow: dashcam SD-card recordings, Raspberry Pi Flask server, and local web browser showing recordings and JSON motion logs." />
+          <figcaption>Conceptual architecture of the historically demonstrated local components. The recovered file watcher is separate, not a verified end-to-end pipeline.</figcaption>
+        </figure>
+        <p class="body-intro">Dashcam recordings were useful, but the footage and event information were scattered across devices. I wanted one local place to inspect available clips and motion records without relying on a cloud product.</p>
+      </section>
+
+      <section class="content-section" aria-labelledby="build-heading">
+        <div class="section-header">
+          <span class="section-index">/ 02 — IMPLEMENTATION</span>
+          <h2 id="build-heading">WHAT I BUILT.</h2>
+        </div>
+        <div class="work-grid">
+          <article class="work-item">
+            <span class="work-count">01 / BACKEND</span>
+            <h3>LOCAL VIDEO BROWSER</h3>
+            <p>I used Python and Flask on the Raspberry Pi to list locally accessible <code>.mp4</code> files and serve selected recordings through a simple HTML/Jinja interface.</p>
+            <div class="endpoint"><code>GET /</code><code>GET /video/&lt;filename&gt;</code></div>
+          </article>
+          <article class="work-item">
+            <span class="work-count">02 / DATA</span>
+            <h3>MOTION LOGGING API</h3>
+            <p>A JSON endpoint accepts X/Y/Z motion readings and writes them to a local file. I tested API requests separately from the mobile app to confirm the Flask side was receiving data.</p>
+            <div class="endpoint"><code>POST /motion</code><code>GET /motion-log</code></div>
+          </article>
+          <article class="work-item">
+            <span class="work-count">03 / INTEGRATION RESEARCH</span>
+            <h3>EVENT FILE MONITOR</h3>
+            <p>I wrote a file-watching script to detect newly visible recordings, copy them, and attempt a webhook. Its paths do not yet connect to the Flask browser, and automatic ingestion was not verified.</p>
+            <div class="tagline">RECOVERED SOURCE · EXPERIMENTAL</div>
+          </article>
+        </div>
+      </section>
+
+      <section class="content-section split-section" aria-labelledby="lesson-heading">
+        <div class="section-header">
+          <span class="section-index">/ 03 — TROUBLESHOOTING</span>
+          <h2 id="lesson-heading">WHERE THE WORK GOT INTERESTING.</h2>
+        </div>
+        <div class="challenge-grid">
+          <article class="challenge">
+            <span>01 / HARDWARE LIMIT</span>
+            <h3>THE CAMERA WASN'T AN OPEN API.</h3>
+            <p>The Wolfbox camera's wireless functionality didn't expose a straightforward file-access interface. I shifted toward recordings available through SD-card / mounted-file access rather than claiming direct wireless ingestion.</p>
+          </article>
+          <article class="challenge">
+            <span>02 / ISOLATING THE BUG</span>
+            <h3>A PASSING API TEST ISN'T A PASSING INTEGRATION.</h3>
+            <p><code>curl</code> requests and local logs demonstrated the Flask endpoint. The Cordova accelerometer app still had HTTP/security configuration problems communicating reliably with the Pi. I kept those findings separate.</p>
+          </article>
+          <article class="challenge">
+            <span>03 / SYSTEM BOUNDARIES</span>
+            <h3>COMPONENTS NEED TO AGREE ON THE SAME FILES.</h3>
+            <p>The recovered watcher copies files into a different location from the one the Flask app scans. This is an integration gap to fix before calling automatic event retrieval complete.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="status-section" aria-labelledby="status-heading">
+        <div class="section-header">
+          <span class="section-index">/ 04 — REALITY CHECK</span>
+          <h2 id="status-heading">BUILT VS. EXPLORED.</h2>
+        </div>
+        <div class="status-columns">
+          <div class="status-col">
+            <h3><span class="status-dot"></span> PREVIOUSLY DEMONSTRATED</h3>
+            <ul>
+              <li>Local video listing and playback</li>
+              <li>Flask endpoints accepting test JSON motion data</li>
+              <li>Motion log files returned as JSON</li>
+              <li>Android accelerometer UI displaying readings</li>
+            </ul>
+          </div>
+          <div class="status-col unverified">
+            <h3><span class="status-dot"></span> NOT VERIFIED END TO END</h3>
+            <ul>
+              <li>Continuous phone-to-Pi sensor uploads</li>
+              <li>Automatic camera event ingestion into Flask</li>
+              <li>Collision detection or incident classification</li>
+              <li>Alexa / home voice announcements</li>
+            </ul>
+          </div>
+        </div>
+        <p class="status-note">This page describes a historical prototype. Its original Raspberry Pi environment was not reproduced or retested for the portfolio, and there is no live demonstration or emergency-alert service.</p>
+      </section>
+
+      <section class="content-section roadmap-section" aria-labelledby="next-heading">
+        <div class="section-header">
+          <span class="section-index">/ 05 — IF I RETURN TO IT</span>
+          <h2 id="next-heading">THE NEXT ITERATION.</h2>
+        </div>
+        <div class="roadmap">
+          <div><span>01</span><h3>UNIFY FILE PATHS</h3><p>Connect the watcher output to the Flask video directory and handle incomplete writes or duplicates.</p></div>
+          <div><span>02</span><h3>EVENT TIMELINE</h3><p>Relate recording filenames and timestamps to a durable event record that can be browsed locally.</p></div>
+          <div><span>03</span><h3>OPTIONAL INTEGRATIONS</h3><p>Revisit secure mobile telemetry and home notifications only after the basic event pipeline is reliable.</p></div>
+        </div>
+      </section>
+
+      <section class="closing" aria-labelledby="takeaway-heading">
+        <p class="eyebrow">/ IMPLEMENTATION TAKEAWAY</p>
+        <h2 id="takeaway-heading">A WORKING ENDPOINT IS ONLY ONE PART OF A WORKING SYSTEM.</h2>
+        <p>The part I would bring to a development or implementation role is the approach: define the moving pieces, test their boundaries independently, troubleshoot the actual failure, and document what the evidence supports.</p>
+        <div class="closing-links">
+          <a class="closing-link" href="https://github.com/oocalder/Drive-Aware" target="_blank" rel="noopener noreferrer">VIEW SOURCE ON GITHUB ↗</a>
+          <a class="closing-link secondary" href="../../index.html">← RETURN TO PORTFOLIO</a>
+        </div>
+      </section>
+    </main>
+    <footer>OSCAR OJEDA <span>DRIVE AWARE / PROJECT 01</span> <span>ARCHIVED PROTOTYPE</span></footer>
+  </body>
+</html>
