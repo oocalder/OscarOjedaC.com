@@ -1220,7 +1220,7 @@ a:focus-visible {
 /* Wide landscape: use the outer left area while preserving central portals. */
 @media (min-width: 1000px) and (orientation: landscape) {
   #col .l {
-    transform: translateX(clamp(-360px, calc(-18vw + 85px), -70px));
+    transform: translateX(clamp(-50px, -3vw, -24px));
     padding-left: 0;
     font-size: clamp(17px, 1.45vw, 28px);
   }
@@ -1301,4 +1301,78 @@ a:focus-visible {
   #project-panel { background: #f9f6faf5; }
   .o-ct::before, .o-ct::after { animation-name: mobilePulse; }
   @keyframes mobilePulse { to { transform: scale(7); opacity: 0; } }
+}
+
+/* Persistent portal captions. Absolute positioning preserves the icon/date/time
+   layout and reserves clearance for each icon's largest animated state. */
+#col .r { position: relative; }
+.portal-caption {
+  position: absolute;
+  top: calc(50% + var(--portal) * 0.75 + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font: 400 clamp(12px, 1vw, 14px)/1.4 var(--mono);
+  letter-spacing: 0.035em;
+  color: #514b43;
+  pointer-events: none;
+  transition: color 160ms ease;
+}
+.r:has(.p:hover) .portal-caption,
+.r:has(.p:focus-visible) .portal-caption { color: var(--ink); }
+#pill small { font-size: clamp(10px, 0.85vw, 13px); letter-spacing: 0; }
+@media (max-width: 767px) and (orientation: portrait) {
+  .portal-caption { top: calc(50% + var(--portal) * 0.61 + 8px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .portal-caption { transition: none; }
+}
+
+/* On desktop and landscape screens, captions sit beside their portals so
+   enlarged icons and the social controls cannot cover the navigation text. */
+@media (min-width: 768px), (orientation: landscape) {
+  .portal-caption {
+    top: 50%;
+    left: calc(50% + var(--portal) * 0.75 + clamp(28px, 3vw, 64px));
+    transform: translateY(-50%);
+  }
+}
+
+/* Smoked-glass lettering: dark body, fine reflected edge, restrained sheen.
+   No looping animation or backdrop blur, keeping mobile rendering light. */
+.portal-caption {
+  font-weight: 500;
+  color: #403d37;
+  text-shadow: 0 1px 0 rgba(255,255,255,.65);
+}
+@supports ((background-clip: text) or (-webkit-background-clip: text)) {
+  .portal-caption {
+    background-image: linear-gradient(112deg,
+      #403d37 0%, #403d37 38%, #77766b 46%,
+      #a5a397 49%, #55554b 53%, #34372f 60%, #403d37 100%);
+    background-size: 240% 100%;
+    background-position: 100% 50%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 1px 0 rgba(255,255,255,.45));
+    text-shadow: none;
+    transition: background-position 650ms ease;
+  }
+  .r:has(.p:hover) .portal-caption,
+  .r:has(.p:focus-visible) .portal-caption {
+    background-position: 0% 50%;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .portal-caption { transition: none; }
+}
+@media (forced-colors: active) {
+  .portal-caption {
+    background: none;
+    -webkit-text-fill-color: CanvasText;
+    color: CanvasText;
+    filter: none;
+    text-shadow: none;
+  }
 }
