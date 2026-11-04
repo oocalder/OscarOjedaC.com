@@ -12,9 +12,9 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="css/portfolio.css" />
-  <link rel="icon" href="favicon.ico?v=2" sizes="any">
-<link rel="icon" type="image/svg+xml" href="favicon.svg?v=2">
-<link rel="apple-touch-icon" href="apple-touch-icon.png?v=2">
+  <link rel="icon" href="favicon.ico?v=5" sizes="any">
+<link rel="icon" type="image/svg+xml" href="favicon.svg?v=5">
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=4">
 </head>
   <body>
     <div id="dev">
@@ -211,9 +211,9 @@
           <p id="tg">TARGET_ID: 0345<br />SONAR CONT.<br />DEADWOOD</p>
           <button class="rt" data-p="1" style="left: 30%; top: 50%" aria-label="Project 1">
             <i></i><b>01</b></button
-          ><button class="rt" data-p="2" style="left: 58%; top: 57%" aria-label="Project 2">
+          ><button class="rt" data-p="2" disabled aria-disabled="true" title="Coming soon" style="left: 58%; top: 57%" aria-label="Project 2">
             <i></i><b>02</b></button
-          ><button class="rt" data-p="3" style="left: 76%; top: 49%" aria-label="Project 3">
+          ><button class="rt" data-p="3" disabled aria-disabled="true" title="Coming soon" style="left: 76%; top: 49%" aria-label="Project 3">
             <i></i><b>03</b>
           </button>
           <div id="project-panel" aria-label="Project showcase">
@@ -222,8 +222,8 @@
             <p>Explore the markers or choose a project below.</p>
             <nav id="project-tabs" aria-label="Choose a project">
               <button type="button" data-project="1">01</button
-              ><button type="button" data-project="2">02</button
-              ><button type="button" data-project="3">03</button>
+              ><button type="button" data-project="2" disabled aria-disabled="true" title="Coming soon">02</button
+              ><button type="button" data-project="3" disabled aria-disabled="true" title="Coming soon">03</button>
             </nav>
             <div id="project-detail" aria-live="polite">
               <div id="project-visual"></div>
@@ -246,64 +246,8 @@
           </div>
         </section>
         <img id="cg" alt="" /><iframe id="cf" title="Cam view" allow="autoplay"></iframe>
-        <section class="s" data-screen="contact">
-          <h2 class="contact-title">Contact</h2>
-          <p class="contact-sub">New business: include location, budget, &amp; timeline</p>
-
-          <!--
-                FORM SETUP: replace YOUR_FORM_ID below with your Formspree form ID
-                (see formspree.io). Until you do, the form falls back to opening
-                the visitor's email app with their message pre-filled.
-            -->
-          <form
-            id="contact-form"
-            class="contact-form"
-            action="https://formspree.io/f/xaeqaoja"
-            method="POST"
-          >
-            <div class="field">
-              <span class="field-label">Name</span>
-              <div class="name-row">
-                <div class="field-half">
-                  <label class="field-sublabel" for="first-name">First Name</label>
-                  <input type="text" id="first-name" name="first_name" autocomplete="given-name" />
-                </div>
-                <div class="field-half">
-                  <label class="field-sublabel" for="last-name">Last Name</label>
-                  <input type="text" id="last-name" name="last_name" autocomplete="family-name" />
-                </div>
-              </div>
-            </div>
-
-            <div class="field">
-              <label class="field-label" for="subject">Subject</label>
-              <input type="text" id="subject" name="subject" />
-            </div>
-
-            <div class="field">
-              <label class="field-label" for="email"
-                >Email<span class="req">(required)</span></label
-              >
-              <input type="email" id="email" name="email" required autocomplete="email" />
-            </div>
-
-            <div class="field">
-              <label class="field-label" for="message"
-                >Message<span class="req">(required)</span></label
-              >
-              <textarea id="message" name="message" required></textarea>
-            </div>
-
-            <!-- Spam trap: real visitors never see or fill this -->
-            <div class="hp-field" aria-hidden="true">
-              <label for="website">Leave this empty</label>
-              <input type="text" id="website" name="_gotcha" tabindex="-1" autocomplete="off" />
-            </div>
-
-            <button type="submit" class="submit-btn">Submit</button>
-            <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
-          </form>
-          <a class="row" href="mailto:OscarOCalder@gmail.com">OscarOCalder@gmail.com ↗</a>
+        <section class="s full" data-screen="contact" aria-label="Contact">
+          <iframe id="contact-frame" src="contact/index.html" title="Contact Oscar Ojeda" loading="lazy"></iframe>
         </section>
         <!-- PERSONAL INDEX screen (disabled)
 <section class="s" data-screen="index"><h2 class="h">PERSONAL<br>INDEX</h2><div class="rec vn"></div>

@@ -1,0 +1,324 @@
+/* General Styles */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Bebas Neue', sans-serif;
+}
+
+/* Theme Toggle Button */
+.toggle-theme {
+    background: none;
+    border: 2px solid #fff;
+    color: #fff;
+    border-radius: 50%;
+    font-size: 18px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+    position: absolute; /* Center it properly */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+}
+
+/* Hover Effect */
+.toggle-theme:hover {
+    transform: translateX(-50%) scale(1.2);
+    background-color: #fff;
+    color: #000;
+}
+
+/* Inverted Colors for Dark Mode */
+body.dark-mode {
+    background-color: #fff;
+    color: #000;
+}
+
+body.dark-mode .navbar {
+    background-color: #fff;
+    color: #000;
+}
+
+body.dark-mode .menu li a {
+    color: #000;
+}
+
+body.dark-mode .menu li a:hover {
+    color: #f1c40f;
+}
+
+body.dark-mode .toggle-theme {
+    background-color: #000;
+    color: #fff;
+    border-color: #000;
+}
+
+/* Dark Mode: Menu Toggle Bar Color */
+body.dark-mode .menu-toggle .bar {
+    background-color: #000; /* Set bars to black in dark mode */
+}
+
+
+body {
+    background-color: #000;
+    color: #fff;
+    line-height: 1.6;
+}
+
+.about-container {
+    max-width: 85%;
+    margin: 40px auto;
+    padding: 0;
+}
+ 
+
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #000;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.navbar .menu {
+    display: flex;
+    list-style: none;
+}
+
+.navbar .menu li {
+    margin-left: 20px;
+}
+
+.navbar .menu li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.navbar .menu li a.active,
+.navbar .menu li a:hover {
+    color: #f1c40f;
+}
+/* Fade-in Effect */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* Staggered Delay for Wave Effect */
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; }
+.delay-4 { transition-delay: 0.4s; }
+.delay-5 { transition-delay: 0.5s; }
+.delay-6 { transition-delay: 0.6s; }
+.delay-7 { transition-delay: 0.7s; }
+
+/* Ensure Email Stays Visible */
+.about-content h2 u {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+}
+
+/* About Content */
+.about-content {
+    text-align: left;
+    margin: 0; /* REMOVE ANY MARGIN */
+    padding: 0; /* REMOVE ANY PADDING */
+}
+
+.about-content h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.about-content h3 {
+    font-size: 56px;
+    margin-bottom: 20px;
+    text-align: left !important;
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+    position: relative; /* Make sure it aligns correctly */
+    left: 0; /* Fully align to the left */
+
+}
+
+/* FIX: Ensure Email Stays Left */
+.about-content h3 u {
+    text-decoration: underline;
+    display: inline-block;
+}
+
+.social-menu h3 {
+    font-size: 56px;
+    text-align: left !important;
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+    display: block;
+}
+
+/* Shift Everything with a "-" Fully to the Left */
+.about-content h3,
+.about-content h2 u,
+.social-menu h3 {
+    margin-left: 0;
+    padding-left: 0;
+    text-align: left;
+    display: block; /* Ensures full width */
+}
+
+/* Remove padding on the left specifically */
+.about-content p,
+.about-content h2,
+.about-content h3 {
+    padding-left: 0 !important;
+    text-align: left !important;
+    margin-left: 0 !important;
+}
+
+/* Fix Social Links Staying Purple */
+.social-menu a {
+    color: inherit !important;  /* Ensure the same color as text */
+    text-decoration: none !important;
+}
+
+ul.social-menu {
+    list-style: none; /* Removes bullets */
+    padding-left: 0; /* Aligns text to the left */
+}
+
+/* Ensure social links are left-aligned */
+.social-menu li {
+    list-style: none;
+    margin-left: 0 !important;
+}
+
+/* Fix Visited Link Color */
+.social-menu a:visited {
+    color: inherit !important;
+}
+
+.about-content p {
+    font-size: 18px;
+    margin-bottom: 20px;
+    max-width: 800px;
+    text-align: left !important;
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+}
+
+/* Ensure Button Visibility in Dark Mode */
+body.dark-mode .toggle-theme {
+    background-color: #000;
+    color: #fff;
+    border-color: #000;
+}
+
+/* ============================================
+   Mobile Menu (added to match index.html's
+   hamburger behavior on About/Contact/Press)
+   ============================================ */
+
+/* Menu Toggle and Overlay - Hidden by Default */
+.menu-toggle,
+.menu-overlay {
+    display: none;
+}
+
+@media screen and (max-width: 1024px) {
+    .navbar .menu {
+        display: none;
+    }
+
+    .menu-toggle {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 24px;
+        width: 30px;
+        cursor: pointer;
+        position: relative;
+        z-index: 1000;
+    }
+
+    .bar {
+        width: 100%;
+        height: 4px;
+        background-color: #fff;
+        transition: all 0.3s ease;
+    }
+
+    .menu-toggle.active .bar:nth-child(1) {
+        transform: rotate(45deg);
+        top: 10px;
+        position: absolute;
+    }
+
+    .menu-toggle.active .bar:nth-child(2) {
+        transform: rotate(-45deg);
+        top: 10px;
+        position: absolute;
+    }
+
+    .menu-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.9);
+        color: white;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        z-index: 999;
+        transition: opacity 0.3s ease;
+    }
+
+    .menu-overlay.active {
+        display: flex;
+        opacity: 1;
+    }
+
+    .menu-overlay ul {
+        list-style: none;
+        padding: 0;
+        text-align: center;
+    }
+
+    .menu-overlay li {
+        margin: 15px 0;
+    }
+
+    .menu-overlay li a {
+        color: white;
+        text-decoration: none;
+        font-size: 24px;
+        transition: color 0.3s;
+    }
+
+    .menu-overlay li a:hover {
+        color: #f1c40f;
+    }
+}
+
+/* Fix: keep the mobile menu overlay full-screen.
+   A transform on the header would trap the fixed-position overlay inside it. */
+.navbar.fade-in {
+    transform: none !important;
+}

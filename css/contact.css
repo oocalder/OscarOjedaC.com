@@ -4,159 +4,143 @@
    ============================================ */
 
 .contact-content {
-  max-width: 900px;
-  margin: 0;
-  padding: 0;
+    max-width: 900px;
+    margin: 0;
+    padding: 0;
 }
 
 .contact-title {
-  font-size: 56px;
-  letter-spacing: 4px;
-  margin-bottom: 10px;
+    font-size: 56px;
+    letter-spacing: 4px;
+    margin-bottom: 10px;
 }
 
 .contact-sub {
-  font-size: 24px;
-  letter-spacing: 3px;
-  color: #bbb;
-  margin-bottom: 40px;
+    font-size: 24px;
+    letter-spacing: 3px;
+    color: #bbb;
+    margin-bottom: 40px;
 }
 
 /* Form layout */
 .contact-form {
-  display: flex;
-  flex-direction: column;
-  gap: 28px;
-  padding-bottom: 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    padding-bottom: 60px;
 }
 
 .field {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
 .field-label {
-  font-size: 30px;
-  letter-spacing: 1px;
+    font-size: 30px;
+    letter-spacing: 1px;
 }
 
 .field-label .req {
-  font-size: 20px;
-  color: #999;
-  margin-left: 8px;
-  letter-spacing: 1px;
+    font-size: 20px;
+    color: #999;
+    margin-left: 8px;
+    letter-spacing: 1px;
 }
 
 .field-sublabel {
-  font-size: 20px;
-  color: #bbb;
-  letter-spacing: 1px;
+    font-size: 20px;
+    color: #bbb;
+    letter-spacing: 1px;
 }
 
 /* First / Last name side by side */
 .name-row {
-  display: flex;
-  gap: 16px;
+    display: flex;
+    gap: 16px;
 }
 
 .name-row .field-half {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
 }
 
 /* Inputs */
 .contact-form input[type="text"],
 .contact-form input[type="email"],
 .contact-form textarea {
-  width: 100%;
-  background-color: #111;
-  color: #fff;
-  border: 1px solid #555;
-  border-radius: 0;
-  padding: 14px;
-  font-size: 24px;
-  letter-spacing: 1px;
-  outline: none;
-  transition: border-color 0.3s;
+    width: 100%;
+    background-color: #111;
+    color: #fff;
+    border: 1px solid #555;
+    border-radius: 0;
+    padding: 14px;
+    font-size: 24px;
+    letter-spacing: 1px;
+    outline: none;
+    transition: border-color 0.3s;
 }
 
 .contact-form textarea {
-  min-height: 180px;
-  resize: vertical;
+    min-height: 180px;
+    resize: vertical;
 }
 
 .contact-form input:focus,
 .contact-form textarea:focus {
-  border-color: #f1c40f;
+    border-color: #f1c40f;
 }
 
 /* Hidden spam trap field */
 .hp-field {
-  position: absolute;
-  left: -9999px;
-  height: 0;
-  width: 0;
-  overflow: hidden;
+    position: absolute;
+    left: -9999px;
+    height: 0;
+    width: 0;
+    overflow: hidden;
 }
 
 /* Submit button */
 .submit-btn {
-  align-self: flex-start;
-  background: none;
-  border: 2px solid #f1c40f;
-  color: #f1c40f;
-  padding: 16px 48px;
-  font-size: 28px;
-  letter-spacing: 3px;
-  cursor: pointer;
-  transition:
-    background-color 0.3s,
-    color 0.3s;
+    align-self: flex-start;
+    background: none;
+    border: 2px solid #f1c40f;
+    color: #f1c40f;
+    padding: 16px 48px;
+    font-size: 28px;
+    letter-spacing: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .submit-btn:hover {
-  background-color: #f1c40f;
-  color: #000;
+    background-color: #f1c40f;
+    color: #000;
 }
 
 .submit-btn:disabled {
-  opacity: 0.5;
-  cursor: default;
+    opacity: 0.5;
+    cursor: default;
 }
 
 /* Status message under the button */
 .form-status {
-  font-size: 24px;
-  letter-spacing: 1px;
-  min-height: 30px;
+    font-size: 24px;
+    letter-spacing: 1px;
+    min-height: 30px;
 }
 
-.form-status.success {
-  color: #7ddc7d;
-}
-.form-status.error {
-  color: #ff6b6b;
-}
+.form-status.success { color: #7ddc7d; }
+.form-status.error   { color: #ff6b6b; }
 
 /* Mobile */
 @media screen and (max-width: 600px) {
-  .contact-title {
-    font-size: 44px;
-  }
-  .contact-sub {
-    font-size: 20px;
-    letter-spacing: 2px;
-  }
-  .name-row {
-    flex-direction: column;
-  }
-  .submit-btn {
-    width: 100%;
-    align-self: stretch;
-  }
+    .contact-title { font-size: 44px; }
+    .contact-sub   { font-size: 20px; letter-spacing: 2px; }
+    .name-row      { flex-direction: column; }
+    .submit-btn    { width: 100%; align-self: stretch; }
 }
 
 /* Phones: compact layout so the whole form fits on one screen */
@@ -166,9 +150,7 @@
     max-width: 92%;
   }
 
-  .navbar + br {
-    display: none;
-  }
+  .navbar + br { display: none; }
 
   .contact-title {
     font-size: 34px;
@@ -187,20 +169,11 @@
     padding-bottom: 24px;
   }
 
-  .field {
-    gap: 4px;
-  }
+  .field { gap: 4px; }
 
-  .field-label {
-    font-size: 22px;
-  }
-  .field-label .req {
-    font-size: 15px;
-    margin-left: 6px;
-  }
-  .field-sublabel {
-    font-size: 16px;
-  }
+  .field-label { font-size: 22px; }
+  .field-label .req { font-size: 15px; margin-left: 6px; }
+  .field-sublabel { font-size: 16px; }
 
   .name-row {
     flex-direction: row;
@@ -214,9 +187,7 @@
     padding: 9px 10px;
   }
 
-  .contact-form textarea {
-    min-height: 90px;
-  }
+  .contact-form textarea { min-height: 90px; }
 
   .submit-btn {
     font-size: 22px;
@@ -228,4 +199,13 @@
     font-size: 18px;
     min-height: 20px;
   }
+}
+
+/* Header-free contact view: reclaim vertical space above the form. */
+.about-container { margin: 16px auto; }
+@media (max-height: 600px) and (orientation: landscape) {
+  .about-container { margin: 8px auto; }
+  .contact-title { margin-bottom: 4px; }
+  .contact-sub { margin-bottom: 16px; }
+  .contact-form { gap: 14px; padding-bottom: 20px; }
 }

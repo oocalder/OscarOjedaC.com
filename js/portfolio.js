@@ -507,6 +507,7 @@ const portfolioProjects = [
   },
 ];
 function showProject(number) {
+  if (number !== 1) return; // Unpublished projects stay disabled.
   const item = portfolioProjects[number - 1];
   if (!item) return;
   for (const key of ["title", "summary", "role", "tools", "outcome"])
@@ -731,6 +732,7 @@ addEventListener("resize", () => {
 
 (function () {
   var form = document.getElementById("contact-form");
+  if (!form) return; // Restored contact page handles its own form inside the iframe.
   var statusEl = document.getElementById("form-status");
   var button = form.querySelector(".submit-btn");
   var TO_EMAIL = "OscarOCalder@gmail.com";
