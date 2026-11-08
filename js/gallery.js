@@ -23,8 +23,16 @@ document.addEventListener("keydown", (e) => {
   if (viewer.open) {
     if (e.key === "ArrowLeft") show(active - 1);
     if (e.key === "ArrowRight") show(active + 1);
-  } else if (e.key === "Escape") parent.postMessage({ galleryBack: true }, location.origin);
+  } else if (e.key === "Escape") parent.postMessage({ galleryBack: true }, location.protocol === "file:" ? "*" : location.origin);
 });
 viewer.addEventListener("click", (e) => {
   if (e.target === viewer) viewer.close();
+});
+
+// Count only visible entries; commented-out photos stay excluded.
+document.querySelector("#frame-count").textContent = buttons.length;
+document.querySelector(".gallery-contact").addEventListener("click", (event) => {
+  if (location.protocol === "file:" || window.parent === window || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+  event.preventDefault();
+  parent.postMessage({ route: "contact" }, location.origin);
 });

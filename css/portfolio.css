@@ -142,13 +142,11 @@ body {
   position: relative;
   background: var(--ink);
   transition:
-    width 0.55s cubic-bezier(0.3, 1.4, 0.5, 1),
-    height 0.55s cubic-bezier(0.3, 1.4, 0.5, 1),
+    transform 0.55s cubic-bezier(0.3, 1.4, 0.5, 1),
     border-radius 0.55s;
 }
 .p.f .orb {
-  width: calc(var(--sz) * 1.5);
-  height: calc(var(--sz) * 1.5);
+  transform: scale(1.5);
   border-radius: 28%;
 }
 .orb::before,

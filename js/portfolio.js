@@ -35,29 +35,33 @@ let mx = -999,
   my = -999,
   rp = null,
   dirty = 1;
+let dotFrame = 0;
+function wakeDots() {
+  if (!dotFrame && !document.hidden && !document.body.classList.contains("zoom")) dotFrame = requestAnimationFrame(dl);
+}
 const mobileMotion = matchMedia("(pointer: coarse)");
 function dsz() {
   const d = Math.min(devicePixelRatio || 1, mobileMotion.matches ? 1.25 : 2);
   dm.width = dev.clientWidth * d;
   dm.height = dev.clientHeight * d;
   dg.setTransform(d, 0, 0, d, 0, 0);
-  dirty = 1;
+  dirty = 1; wakeDots();
 }
 dsz();
 addEventListener("resize", dsz);
 dev.addEventListener("pointermove", (e) => {
   const r = dev.getBoundingClientRect();
-  dirty = 1;
+  dirty = 1; wakeDots();
   mx = e.clientX - r.left;
   my = e.clientY - r.top;
 });
-dev.addEventListener("pointerup", () => { mx = -999; dirty = 1; });
+dev.addEventListener("pointerup", () => { mx = -999; dirty = 1; wakeDots(); });
 dev.addEventListener("pointerleave", () => {
   mx = -999;
-  dirty = 1;
+  dirty = 1; wakeDots();
 });
-(function dl(now) {
-  requestAnimationFrame(dl);
+function dl(now) {
+  dotFrame = 0;
   if (document.body.classList.contains("zoom") || (!rp && !dirty)) return;
   dirty = 0;
   const W = dev.clientWidth,
@@ -65,7 +69,7 @@ dev.addEventListener("pointerleave", () => {
     S = 20;
   if (rp && now - rp.t > 1500) {
     rp = null;
-    dirty = 1;
+    dirty = 1; wakeDots();
   }
   dg.clearRect(0, 0, W, H);
   for (let y = S / 2; y < H; y += S)
@@ -91,7 +95,9 @@ dev.addEventListener("pointerleave", () => {
       dg.arc(x, y, r, 0, 7);
       dg.fill();
     }
-})(0);
+  if (rp) wakeDots();
+}
+addEventListener("visibilitychange", () => { dirty = 1; wakeDots(); });
 let fi = Math.min(1, N - 1),
   lastSw = 0,
   bt,
@@ -110,7 +116,7 @@ function setFocus(i, q, silentWave = false) {
   if (!silentWave) {
     const r = P[fi].getBoundingClientRect();
     rp = { x: r.left + r.width / 2, y: r.top + r.height / 2, t: performance.now() };
-    dirty = 1;
+    dirty = 1; wakeDots();
   }
   q || (navigator.vibrate && navigator.vibrate(8));
 }
@@ -265,6 +271,8 @@ function open(id, el, shutterPlayed = false, replaceHistory = false) {
     return;
   }
   endTour();
+  const frame = id === "cam" ? $("#cf") : id === "contact" ? $("#contact-frame") : null;
+  if (frame && !frame.getAttribute("src")) frame.src = id === "cam" ? "photography/index.html" : frame.dataset.src;
   {
     const ob = el.querySelector(".orb") || el,
       br = getComputedStyle(ob).borderTopLeftRadius;
@@ -287,7 +295,7 @@ function open(id, el, shutterPlayed = false, replaceHistory = false) {
     if (F) flip(id == "proj" ? [$("#cv")] : [$("#cg"), $("#cf")], F, 1);
   }
   try {
-    history[replaceHistory ? "replaceState" : "pushState"]({ o: 1 }, "");
+    history[replaceHistory ? "replaceState" : "pushState"]({ o: 1, panel: id }, "", location.pathname + location.search + (id === "contact" ? "#contact" : ""));
     hist = 1;
   } catch (e) {
     hist = 0;
@@ -300,10 +308,11 @@ function shut() {
   ov.classList.remove("on");
   ov.style.clipPath = clip(R);
   document.body.classList.remove("zoom");
+  dirty = 1; wakeDots();
   const c0 = cur,
     F = { proj: PF, cam: CF }[c0],
     els = c0 == "proj" ? [$("#cv")] : [$("#cg"), $("#cf")],
-    rl = () => c0 == "cam" && $("#cf").contentWindow.location.reload();
+    rl = () => {}; // Keep gallery loaded; avoid decoding the same photos again on Back.
   if (F) {
     flip(els, F, 0);
     if (c0 == "cam") $("#cf").style.opacity = 0;
@@ -318,7 +327,12 @@ function shut() {
   } else setTimeout(rl, 850);
 }
 $("#x").onclick = () => (hist ? history.back() : shut());
-addEventListener("popstate", shut);
+addEventListener("popstate", () => {
+  if (location.hash === "#contact") {
+    stop();
+    open("contact", $("[data-o=contact]"), false, true);
+  } else shut();
+});
 addEventListener("keydown", (e) => {
   endTour();
   if (e.key == "Escape") $("#x").click();
@@ -351,7 +365,7 @@ function story() {
 /* PROJECTS: moss-covered deadwood, drawn procedurally; a lime scan band lights the moss, targets open project info */
 let TC = null;
 function tree(W, H, d) {
-  if (TC && TC.k == W + "x" + H) return TC;
+  if (TC && TC.k == W + "x" + H + "@" + d) return TC;
   const mk = () => {
     const k = document.createElement("canvas");
     k.width = W * d;
@@ -460,7 +474,7 @@ function tree(W, H, d) {
     dot(m, q, r, `hsl(${100 + rn() * 25} 40% ${14 + rn() * 14}%)`);
     dot(l, q, r, `hsl(${95 + rn() * 20} 80% ${30 + rn() * 14}%)`);
   }
-  return (TC = { k: W + "x" + H, T, M, L });
+  return (TC = { k: W + "x" + H + "@" + d, T, M, L });
 }
 
 // Each project is authored here. Relative project URLs link to a local case study;
@@ -641,7 +655,7 @@ function forest() {
 function cam() {
   setTimeout(() => {
     const w = $("#cf").contentWindow;
-    w && w.postMessage({ go: 1 }, location.origin);
+    w && w.postMessage({ go: 1 }, location.protocol === "file:" ? "*" : location.origin);
   }, 450);
   return () => {};
 }
@@ -663,12 +677,13 @@ function focalBg(o, url, F, W, H) {
 function icons() {
   const W = dev.clientWidth,
     H = dev.clientHeight,
-    d = Math.min(devicePixelRatio || 1, mobileMotion.matches ? 1 : 1.5),
+    d = Math.min(1, 480 / W),
     { T, M } = tree(W, H, d),
     c = document.createElement("canvas");
-  c.width = W;
-  c.height = H;
+  c.width = Math.round(W * d);
+  c.height = Math.round(H * d);
   const x = c.getContext("2d");
+  x.scale(d, d);
   x.fillStyle = "#c7bdb4";
   x.fillRect(0, 0, W, H);
   x.drawImage(T, 0, 0, W, H);
@@ -717,13 +732,13 @@ addEventListener("message", (e) => {
   if (e.origin !== location.origin || !e.data) return;
   const m = e.data;
   if (m.cam == "ready") return camIcon(m);
-  if (!m.route) return;
+  if (!m.route || e.source !== $("#cf").contentWindow) return;
   const id = m.route == "about" ? "story" : "contact";
-  shut();
-  setTimeout(() => open(id, id == "story" ? $(".av") : $("[data-o=contact]")), 900);
+  stop();
+  open(id, id == "story" ? $(".av") : $("[data-o=contact]"), false, Boolean(hist));
 });
 setTimeout(icons, 60); // Camera intro disabled. To restore it, change gallery.html to index.html.
-$("#cf").src = "cam/gallery.html";
+// Gallery and contact documents load only when their portals open.
 let rt;
 addEventListener("resize", () => {
   clearTimeout(rt);
@@ -802,4 +817,16 @@ addEventListener("resize", () => {
 addEventListener("message", (e) => {
   if (e.origin === location.origin && e.source === $("#cf").contentWindow && e.data?.galleryBack)
     $("#x").click();
+});
+
+// Direct gallery links open Contact in the portfolio shell, with Back to home.
+if (location.hash === "#contact") {
+  history.replaceState({}, "", location.pathname + location.search);
+  open("contact", $("[data-o=contact]"));
+}
+addEventListener("hashchange", () => {
+  if (location.hash === "#contact" && (!ov.classList.contains("on") || cur !== "contact")) {
+    stop();
+    open("contact", $("[data-o=contact]"), false, true);
+  }
 });

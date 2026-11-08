@@ -9,6 +9,13 @@
     padding: 0;
 }
 
+/* Center the complete form on larger screens; retain the phone layout. */
+@media screen and (min-width: 601px) {
+    .contact-content {
+        margin-inline: auto;
+    }
+}
+
 .contact-title {
     font-size: 56px;
     letter-spacing: 4px;

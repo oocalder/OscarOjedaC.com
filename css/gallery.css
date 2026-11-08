@@ -109,3 +109,10 @@ button {
     columns: 1;
   }
 }
+
+/* Header contact link stays visible at every screen size. */
+.gallery-header-actions { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+.gallery-contact { display: inline-flex; align-items: center; justify-content: center; gap: 14px; min-height: 44px; padding: 10px 18px; border: 1px solid #ffffff66; border-radius: 999px; color: #f9f6fa; background: #ffffff0d; text-decoration: none; transition: background 160ms ease, border-color 160ms ease; }
+.gallery-contact:hover { background: #ffffff1a; border-color: #ffffffaa; }
+.gallery-contact:focus-visible { outline: 3px solid #8eb878; outline-offset: 4px; }
+@media (max-width: 700px) { .gallery-header-actions { margin-top: 16px; justify-content: space-between; gap: 12px; } }
